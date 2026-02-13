@@ -1,80 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-    font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-    background-color: #050507;
-    color: white;
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color-scheme: dark;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #030308;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
     margin: 0;
+    display: flex;
+    min-width: 320px;
+    min-height: 100vh;
     overflow: hidden;
-    height: 100vh;
-    width: 100vw;
 }
 
-/* Custom Scrollbar for the Diagnostic Panel */
-.custom-scrollbar::-webkit-scrollbar {
-    width: 4px;
+#root {
+    width: 100%;
 }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(99, 102, 241, 0.2);
-    border-radius: 10px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(99, 102, 241, 0.4);
-}
-
-/* Neon Glow Animations */
-@keyframes neon-pulse {
-
-    0%,
-    100% {
-        box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+@layer utilities {
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 3px;
     }
 
-    50% {
-        box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .shadow-3xl {
+        box-shadow: 0 0 50px -12px rgb(0 0 0 / 0.5);
     }
 }
 
-.neon-border {
-    box-shadow: 0 0 10px rgba(99, 102, 241, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.neon-border:hover {
-    animation: neon-pulse 2s infinite ease-in-out;
-    border-color: rgba(99, 102, 241, 0.5);
-}
-
-/* Grid Box Ripple Glow */
-@keyframes ripple-glow {
-    0% {
-        transform: scale(1);
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: scale(1.5);
-        opacity: 0;
-    }
-}
-
-.ripple-effect::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border: 2px solid currentColor;
-    border-radius: inherit;
-    animation: ripple-glow 0.8s ease-out;
-    pointer-events: none;
+/* Base transitions */
+* {
+    @apply transition-colors duration-300;
 }
